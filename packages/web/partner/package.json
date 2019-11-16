@@ -1,0 +1,23 @@
+{
+  "name": "yaguwagu-partner-front",
+  "version": "1.0.0",
+  "description": "",
+  "author": "kirei",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --spa",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.8.0",
+    "axios": "^0.19.0",
+    "firebase": "^7.3.0",
+    "nuxt": "^2.0.0",
+    "vuefire": "^2.2.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}

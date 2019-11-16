@@ -1,0 +1,23 @@
+# Moudle
+node_modules
+
+# Vue
+.nuxt
+dist
+
+# Serverless
+.serverless
+
+# Config
+config.js
+
+# reactNative
+.expo/*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/

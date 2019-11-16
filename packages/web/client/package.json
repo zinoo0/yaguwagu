@@ -1,0 +1,30 @@
+{
+  "name": "yaguwagu-client-front",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nuxt --spa",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate --spa",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "deploy_s3": "nuxt generate --spa && aws s3 sync ./dist s3://yagyuwagu"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.6.0",
+    "@nuxtjs/vuetify": "^1.8.5",
+    "axios": "^0.19.0",
+    "firebase": "^7.1.0",
+    "nuxt": "^2.0.0",
+    "vue-naver-maps": "^0.11.9",
+    "vuefire": "^2.2.0",
+    "vuetify": "^2.0.19"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}
