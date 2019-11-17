@@ -14,6 +14,7 @@
     "@nuxtjs/axios": "^5.6.0",
     "@nuxtjs/vuetify": "^1.8.5",
     "axios": "^0.19.0",
+    "core-js": "^2.6.5",
     "firebase": "^7.1.0",
     "nuxt": "^2.0.0",
     "vue-naver-maps": "^0.11.9",

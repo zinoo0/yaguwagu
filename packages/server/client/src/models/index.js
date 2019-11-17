@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PW } = require('../config');
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PW } = require('../config/config');
 const db = {};
 
 const sequelize = new Sequelize('yaguwagu_client', MYSQL_USER, MYSQL_PW, {

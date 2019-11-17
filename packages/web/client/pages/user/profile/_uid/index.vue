@@ -12,7 +12,7 @@
       UserProfileInfo
     },
     fetch({ store, params }){
-      store.dispatch('users/loadProfile', params.uid);
+      store.dispatch('users/loadProfile', { uid: params.uid });
     },
     computed: {
       user() {

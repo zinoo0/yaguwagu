@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models');
+const { isAuthenticated } = require('../middlewares');
 
-// IP 조회
 const getClientIp = (req) => {
   let ipAddress;
   // The request may be forwarded from local web server.
@@ -18,8 +18,8 @@ const getClientIp = (req) => {
   return ipAddress;
 };
 
-// 자신 profile 조회
-router.get('/profile', async (req, res, next) => {
+// profile
+router.get('/profile', isAuthenticated, async (req, res, next) => {
   try {
     const user = await db.User.findOne({
       where: { uid: req.query.uid }
@@ -31,11 +31,11 @@ router.get('/profile', async (req, res, next) => {
   }
 });
 
-// profile 조회
-router.get('/profile_other', async (req, res, next) => {
+// profile
+router.get('/profile/:uid', async (req, res, next) => {
   try {
     const user = await db.User.findOne({
-      where: { uid: req.query.uid },
+      where: { uid: req.params.uid },
       attributes: ['username', 'email', 'profileUrl', 'team']
     });
     return res.send(user);
@@ -95,7 +95,7 @@ router.put('/logout', async (req, res, next) => {
 });
 
 // update
-router.put('/update', async(req, res, next) => {
+router.put('/update', isAuthenticated, async(req, res, next) => {
   try {
     await db.User.update({
     username: req.body.username,
@@ -109,6 +109,7 @@ router.put('/update', async(req, res, next) => {
       where: { uid: req.body.uid },
       attributes: ['username', 'phone', 'team']
     });
+
     return res.send(user);
   } catch (err) {
     console.error(err);
@@ -117,7 +118,7 @@ router.put('/update', async(req, res, next) => {
 });
 
 // delete
-router.delete('/delete', async (req, res, next) => {
+router.delete('/delete', isAuthenticated, async (req, res, next) => {
   try {
     await db.User.destroy({where: {uid: req.query.uid }});
     return res.send('정상적으로 삭제되었습니다.');

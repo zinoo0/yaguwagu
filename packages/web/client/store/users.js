@@ -46,7 +46,7 @@ export const actions = {
   },
   async loadProfile({ commit }, payload) {
     try {
-      const res = await this.$axios.get(`${process.env.BACK_URL}/user/profile_other?uid=${payload}`)
+      const res = await this.$axios.get(`${process.env.BACK_URL}/user/profile/${payload.uid}`)
       commit('loadProfile', res.data);
     } catch (err) {
       console.error(err);

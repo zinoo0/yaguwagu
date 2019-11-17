@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PW } = require('../config');
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PW } = require('../config/config');
 
 module.exports = (dbName) => {
   const db = {};

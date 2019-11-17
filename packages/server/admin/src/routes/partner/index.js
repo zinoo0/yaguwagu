@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../../models');
 const AWS = require('aws-sdk');
 
-const { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = require('../../config');
+const { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = require('../../config/config');
 
 const s3 = new AWS.S3({
   accessKeyId: AWS_ACCESS_KEY,
