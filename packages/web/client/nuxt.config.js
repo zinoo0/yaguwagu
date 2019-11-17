@@ -4,18 +4,6 @@ module.exports = {
     // BACK_URL: 'https://2cxmcgita0.execute-api.ap-northeast-2.amazonaws.com/dev',
     BACK_URL: 'http://localhost:9090',
     BACK_URL_SPRING: 'https://wgwrg00105.execute-api.ap-northeast-2.amazonaws.com/dev/client',
-    // FIREBASE CONFIG
-    FIREBASE_API_KEY: "AIzaSyA4oDOjfgkH0Drrmi9GnkCppAWzCsLl8Sc",
-    FIREBASE_AUTH_DOMAIN: "yagyuwagu.firebaseapp.com",
-    FIREBASE_DATABASE_URL: "https://yagyuwagu.firebaseio.com",
-    FIREBASE_PROJECT_ID: "yagyuwagu",
-    FIREBASE_STORAGE_BUCKET: "yagyuwagu.appspot.com",
-    FIREBASE_MESSAGING_SENDER_ID: "496882769897",
-    FIREBASE_APP_ID: "1:496882769897:web:65b4867da277f348817578",
-    FIREBASE_MEASUREMNET_ID: "G-6CVKHRENK5",
-    // NAVER CONFIG
-    NAVER_CLIENT_ID: "bgfvw3ntvm",
-    // S3
   },
   modules: [
     '@nuxtjs/axios',
