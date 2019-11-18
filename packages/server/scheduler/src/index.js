@@ -6,4 +6,8 @@ const service = require('./services');
 cron.schedule('*/59 * * * *', () => {
   service.partnerSync();
   service.userSync();
+  service.orderSync();
 });
+service.partnerSync();
+service.userSync();
+service.orderSync();

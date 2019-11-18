@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true
     },
     url: {
-      type: Sequelize.TEXT('medium'),
+      type: Sequelize.STRING,
       allowNull: false,
     },
   });

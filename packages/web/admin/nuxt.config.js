@@ -3,7 +3,6 @@ module.exports = {
     // Backend
     BACK_URL: 'https://bpi8orijii.execute-api.ap-northeast-2.amazonaws.com/dev',
     // BACK_URL: 'http://localhost:9091',
-    // BACK_URL: 'http://15.164.1.112:9091',
   },
   modules: [
     '@nuxtjs/axios',

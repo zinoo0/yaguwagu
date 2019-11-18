@@ -21,6 +21,10 @@ db.PartnerMainImage = require('./PartnerMainImage')(sequelize, Sequelize);
 db.PartnerMenuImage = require('./PartnerMenuImage')(sequelize, Sequelize);
 db.PartnerMenu = require('./PartnerMenu')(sequelize, Sequelize);
 
+// Order
+db.PartnerOrder = require('./PartnerOrder')(sequelize, Sequelize);
+db.PartnerOrderMenu = require('./PartnerOrderMenu')(sequelize, Sequelize);
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

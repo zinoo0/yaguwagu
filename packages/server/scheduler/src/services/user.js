@@ -3,6 +3,7 @@ const clientDB = require('../models')('yaguwagu_client');
 
 const userSync = async () => {
   try {
+    // Table 초기화
     await adminDB.User.destroy({ truncate: true, cascade: false });
 
     const fullUser = await clientDB.User.findAll();
