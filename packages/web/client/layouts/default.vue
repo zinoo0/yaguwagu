@@ -11,7 +11,7 @@
       <v-btn text to="/map" class="black--text">Map</v-btn>
       <v-btn v-if="!user" text to="/signin" color="primary">Sign In</v-btn>
       <v-toolbar-items>
-        <user-profile v-if="user"></user-profile>
+        <header-avatar v-if="user"></header-avatar>
       </v-toolbar-items>
     </v-app-bar>
     <!-- Mobile -->
@@ -21,7 +21,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-icon v-if="!user" color="black" icon size="28" @click="$router.push({ path: '/signin' })">mdi-lock</v-icon>
-        <user-profile v-if="user"></user-profile>
+        <header-avatar v-if="user"></header-avatar>
       </v-toolbar-items>
     </v-app-bar>
     <!-- Content -->
@@ -49,12 +49,12 @@
 </template>
 
 <script>
-  import UserProfile from "~/components/UserProfile/UserProfile";
+  import HeaderAvatar from "~/components/Header/HeaderAvatar";
   import FButton from "~/components/FButton/FButton";
 
   export default {
     components: {
-      UserProfile, FButton
+      HeaderAvatar, FButton
     },
     data() {
       return {

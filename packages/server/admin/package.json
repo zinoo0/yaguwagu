@@ -1,10 +1,9 @@
 {
   "name": "yaguwagu-admin-server",
   "version": "1.0.0",
-  "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",

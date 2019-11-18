@@ -1,8 +1,7 @@
 <template>
   <v-menu close-on-click offset-x transition="scroll-y-transition">
     <template v-slot:activator="{ on }">
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp" text color="primary" v-on="on">Profile</v-btn>
-      <v-avatar v-if="$vuetify.breakpoint.mdAndDown" class="mt-3" size="30" style="cursor: pointer"><v-img :src="user.profileUrl" v-on="on" /></v-avatar>
+      <v-avatar class="mt-3" size="35" style="cursor: pointer"><v-img :src="user.profileUrl" v-on="on" /></v-avatar>
     </template>
     <v-card>
       <v-list width="350">

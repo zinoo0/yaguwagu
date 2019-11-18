@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models');
-const { isAuthenticated } = require('../middlewares');
+// const { isAuthenticated } = require('../middlewares');
 
 const getClientIp = (req) => {
   let ipAddress;
@@ -19,7 +19,7 @@ const getClientIp = (req) => {
 };
 
 // profile
-router.get('/profile', isAuthenticated, async (req, res, next) => {
+router.get('/profile', async (req, res, next) => {
   try {
     const user = await db.User.findOne({
       where: { uid: req.query.uid }
@@ -95,7 +95,7 @@ router.put('/logout', async (req, res, next) => {
 });
 
 // update
-router.put('/update', isAuthenticated, async(req, res, next) => {
+router.put('/update', async(req, res, next) => {
   try {
     await db.User.update({
     username: req.body.username,
@@ -118,7 +118,7 @@ router.put('/update', isAuthenticated, async(req, res, next) => {
 });
 
 // delete
-router.delete('/delete', isAuthenticated, async (req, res, next) => {
+router.delete('/delete', async (req, res, next) => {
   try {
     await db.User.destroy({where: {uid: req.query.uid }});
     return res.send('정상적으로 삭제되었습니다.');

@@ -1,7 +1,7 @@
 module.exports = {
   env: {
-    // BACK
     BACK_URL: 'https://2cxmcgita0.execute-api.ap-northeast-2.amazonaws.com/dev',
+    // BACK_URL: 'http://localhost:9090',
     BACK_URL_SPRING: 'https://wgwrg00105.execute-api.ap-northeast-2.amazonaws.com/dev/client',
   },
   modules: [
@@ -9,7 +9,7 @@ module.exports = {
   ],
   plugins: ['~/plugins/firebase', '~/plugins/naver'],
   head: {
-    title: '야구와구',
+    title: 'Yaguwagu',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

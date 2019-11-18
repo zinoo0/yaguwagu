@@ -8,7 +8,7 @@ provider:
 
 functions:
   api:
-    handler: src/app.handler
+    handler: src/serverless.handler
     events:
       - http:
           path: /user
