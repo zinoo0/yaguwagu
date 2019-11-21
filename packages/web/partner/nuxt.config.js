@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     // Back
-    BACK_URL_SPRING: 'https://wgwrg00105.execute-api.ap-northeast-2.amazonaws.com/dev/partner',
+    BACK_URL_SPRING: 'https://6s8sgz130c.execute-api.ap-northeast-2.amazonaws.com/dev',
     // BACK_URL_SPRING: 'http://localhost:3086/partner',    
     // Firebase Config
     FIREBASE_API_KEY: "AIzaSyA4oDOjfgkH0Drrmi9GnkCppAWzCsLl8Sc",

@@ -127,7 +127,7 @@
       },      
       async onClickOrder() {
         try {
-          await this.$axios.post(`${process.env.BACK_URL_SPRING}/order`, {
+          await this.$axios.post(`${process.env.BACK_URL}/order`, {
             menu: this.selectedMenus,
             seat: this.seatInfo
           });
