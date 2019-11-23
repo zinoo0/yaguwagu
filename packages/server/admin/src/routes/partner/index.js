@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../models');
+const { Partner, PartnerMainImage, PartnerMenuImage, PartnerMenu } = require('../../models');
 const AWS = require('aws-sdk');
 
 const { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = require('../../config/config');
@@ -14,7 +14,7 @@ const s3 = new AWS.S3({
 router.post('/', async (req, res, next) => {
   try {
     // Partner DB 저장
-    const partner = await db.Partner.create({
+    const partner = await Partner.create({
       name: req.body.name,
       phone: req.body.phone,
       time: req.body.time,
@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
     
     // Partner Menu 저장
     for(const menu of req.body.menus) {
-      await db.PartnerMenu.create({
+      await PartnerMenu.create({
         partnerId: partner.dataValues.id,
         name: menu.name,
         price: menu.price,
@@ -41,7 +41,7 @@ router.post('/', async (req, res, next) => {
 
       const s3Response = await s3.upload(param).promise();
 
-      await db.PartnerMainImage.create({
+      await PartnerMainImage.create({
         partnerId: partner.dataValues.id,
         url: s3Response.Location,
       });
@@ -59,7 +59,7 @@ router.post('/', async (req, res, next) => {
       }
       const s3Response = await s3.upload(param).promise();
       
-      await db.PartnerMenuImage.create({
+      await PartnerMenuImage.create({
         partnerId: partner.dataValues.id,
         url: s3Response.Location,
       });

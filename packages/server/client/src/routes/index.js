@@ -1,8 +1,8 @@
 const api = require('./api')
-const map = require('./map');
+const naverMap = require('./naverMap');
 const partner = require('./partner');
 const user = require('./user');
 
 module.exports = {
-  api, map, partner, user
+  api, naverMap, partner, user
 }

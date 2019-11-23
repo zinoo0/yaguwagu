@@ -17,7 +17,7 @@ db.User = require('./User')(sequelize, Sequelize);
 db.LogSession = require('./LogSession')(sequelize, Sequelize);
 
 // Map
-db.Map = require('./Map')(sequelize, Sequelize);
+db.NaverMap = require('./NaverMap')(sequelize, Sequelize);
 
 // Partner
 db.Partner = require('./Partner')(sequelize, Sequelize);

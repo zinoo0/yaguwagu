@@ -3,11 +3,11 @@ const clientDB = require('../models')('yaguwagu_client');
 
 const userSync = async () => {
   try {
-    // Table 초기화
+    // DB Initialization
     await adminDB.User.destroy({ truncate: true, cascade: false });
 
+    // DB Insert
     const fullUser = await clientDB.User.findAll();
-
     for(const user of fullUser) {
       await adminDB.User.create({
         uid: user.uid,

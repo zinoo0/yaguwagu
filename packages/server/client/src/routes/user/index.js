@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../models');
+const { User, LogSession } = require('../../models');
 // const { isAuthenticated } = require('../middlewares');
 
 const getClientIp = (req) => {
   let ipAddress;
-  // The request may be forwarded from local web server.
   let forwardedIpsStr = req.header('x-forwarded-for'); 
   if (forwardedIpsStr) {
     let forwardedIps = forwardedIpsStr.split(',');
     ipAddress = forwardedIps[0];
   }
   if (!ipAddress) {
-    // If request was not forwarded
     ipAddress = req.connection.remoteAddress;
   }
   return ipAddress;
@@ -21,7 +19,7 @@ const getClientIp = (req) => {
 // profile
 router.get('/profile', async (req, res, next) => {
   try {
-    const user = await db.User.findOne({
+    const user = await User.findOne({
       where: { uid: req.query.uid }
     })
     return res.send(user);
@@ -34,7 +32,7 @@ router.get('/profile', async (req, res, next) => {
 // profile
 router.get('/profile/:uid', async (req, res, next) => {
   try {
-    const user = await db.User.findOne({
+    const user = await User.findOne({
       where: { uid: req.params.uid },
       attributes: ['username', 'email', 'profileUrl', 'team']
     });
@@ -48,15 +46,15 @@ router.get('/profile/:uid', async (req, res, next) => {
 // login
 router.post('/login', async (req, res, next) => {
   try {
-    const exUser = await db.User.findOne({where: { uid: req.body.uid }});
+    const exUser = await User.findOne({where: { uid: req.body.uid }});
     if(exUser) {
-      await db.LogSession.update({
+      await LogSession.update({
         is_activate: 1
       }, {
         where: { uid: req.body.uid }
       });
     } else {
-      await db.User.create({
+      await User.create({
         uid: req.body.uid,
         email: req.body.email,
         profileUrl: req.body.profileUrl,
@@ -64,14 +62,14 @@ router.post('/login', async (req, res, next) => {
         phone: req.body.phone
       });
     }
-    await db.LogSession.create({
+    await LogSession.create({
       uid: req.body.uid,
       accessToken: req.body.accessToken,
       remoteIp: getClientIp(req),
       tokenExpiredAt: Date.now() + 86400000,
       isActivate: 1
     });
-    const user = await db.User.findOne({where: { uid: req.body.uid }});
+    const user = await User.findOne({where: { uid: req.body.uid }});
     return res.send(user);
   } catch (err) {
     console.error(err);
@@ -82,7 +80,7 @@ router.post('/login', async (req, res, next) => {
 // logout
 router.put('/logout', async (req, res, next) => {
   try {
-    await db.LogSession.update({
+    await LogSession.update({
       isActivate: 1
     }, {
       where: { uid: req.body.uid }
@@ -97,7 +95,7 @@ router.put('/logout', async (req, res, next) => {
 // update
 router.put('/update', async(req, res, next) => {
   try {
-    await db.User.update({
+    await User.update({
     username: req.body.username,
     phone: req.body.phone,
     team: req.body.team
@@ -105,7 +103,7 @@ router.put('/update', async(req, res, next) => {
       where: { uid: req.body.uid }
     });
 
-    const user = await db.User.findOne({
+    const user = await User.findOne({
       where: { uid: req.body.uid },
       attributes: ['username', 'phone', 'team']
     });
@@ -120,7 +118,7 @@ router.put('/update', async(req, res, next) => {
 // delete
 router.delete('/delete', async (req, res, next) => {
   try {
-    await db.User.destroy({where: {uid: req.query.uid }});
+    await User.destroy({where: {uid: req.query.uid }});
     return res.send('정상적으로 삭제되었습니다.');
   } catch (err) {
     console.error(err);

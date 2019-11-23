@@ -4,7 +4,7 @@ const partnerDB = require('../models')('yaguwagu_partner');
 
 const orderSync = async () => {
   try {
-    // Table 초기화
+    // DB Initializeation
     await adminDB.PartnerOrderMenu.destroy({ truncate: true, cascade: true });
     await adminDB.PartnerOrder.destroy({
       where: { 
@@ -12,7 +12,7 @@ const orderSync = async () => {
       }
     });
 
-    // Data 추가
+    // DB Insert
     const fullOrder = await partnerDB.PartnerOrder.findAll();
     for(const order of fullOrder) {
       // PartnerOrder
@@ -20,6 +20,7 @@ const orderSync = async () => {
         id: order.id,
         seat: order.seat,
       });
+
       // PartnerOrderMenu
       const fullPartnerOrderMenu = await partnerDB.PartnerOrderMenu.findAll({where: {partnerOrderId: order.id}});
       for(let partnerOrder of fullPartnerOrderMenu) {
@@ -30,20 +31,6 @@ const orderSync = async () => {
         });
       }
     }
-    // for(const partner of fullPartner) {
-    //   // Parnter Main Image
-    //   const fullPartnerMainImage = await adminDB.PartnerMainImage.findAll({
-    //     where: {
-    //       partnerId: partner.dataValues.id
-    //     }
-    //   });
-    //   for(const mainImage of fullPartnerMainImage) {
-    //     await clientDB.PartnerMainImage.create({
-    //       partnerId: partner.dataValues.id,
-    //       url: mainImage.url
-    //     });
-    //   }
-    // }
   } catch (err) {
     console.error(err);
   }

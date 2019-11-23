@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../models');
+const { NaverMap } = require('../../models');
 
 router.get('/', async (req, res, next) => {
   try {
-    const fullMap = await db.Map.findAll();
+    const fullMap = await NaverMap.findAll();
     return res.send(fullMap);
   } catch (err) {
     console.error(err);

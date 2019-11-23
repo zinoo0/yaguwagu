@@ -3,7 +3,7 @@ const clientDB = require('../models')('yaguwagu_client');
 
 const partnerSync = async () => {
   try {
-    // Table 초기화
+    // DB Initializeation
     await clientDB.PartnerMainImage.destroy({ truncate: true, cascade: true });
     await clientDB.PartnerMenuImage.destroy({ truncate: true, cascade: true });
     await clientDB.PartnerMenu.destroy({ truncate: true, cascade: true });
@@ -13,8 +13,8 @@ const partnerSync = async () => {
       }
     });
 
+    // DB Insert
     const fullPartner = await adminDB.Partner.findAll();
-
     for(const partner of fullPartner) {
       // Partner
       await clientDB.Partner.create({

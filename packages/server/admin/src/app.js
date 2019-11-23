@@ -3,7 +3,6 @@ const cors = require('cors');
 const app = express();
 const { partner, user, order } = require('./routes');
 
-// app
 app.use(cors()); // cors({ origin: ['', '', ''] })
 app.use(express.json({limit: '50mb'}));
 app.use('/user', user);

@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../models');
+const { PartnerMainImage, PartnerMenuImage, PartnerMenu } = require('../../models');
 
 router.get('/', async (req, res, next) => {
   try {
     const fullPartner = await db.Partner.findAll({
       include: [{
-        model: db.PartnerMainImage,
+        model: PartnerMainImage,
         as: 'mainImages'
       },{
-        model: db.PartnerMenuImage,
+        model: PartnerMenuImage,
         as: 'menuImages'
       },{
-        model: db.PartnerMenu,
+        model: PartnerMenu,
         as: 'menus'
       }]
     });

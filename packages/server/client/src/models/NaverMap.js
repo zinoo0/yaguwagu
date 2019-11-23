@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Map = sequelize.define('map', {
+  const NaverMap = sequelize.define('map', {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -27,5 +27,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return Map;
+  return NaverMap;
 }
