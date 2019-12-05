@@ -1,0 +1,7 @@
+.DS_STORE
+
+.nuxt
+dist
+node_modules
+
+config.js

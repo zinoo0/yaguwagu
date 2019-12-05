@@ -1,0 +1,47 @@
+service: yaguwagu-client
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: ap-northeast-2  
+
+functions:
+  api:
+    handler: src/serverless.handler
+    events:
+      - http:
+          path: /map
+          method: get
+          cors:
+            origin: '*'
+      - http:
+          path: /partner
+          method: get
+          cors:
+            origin: '*'            
+      - http:
+          path: /user/profile/{uid}
+          method: get
+          cors:
+            origin: '*'
+      - http:
+          path: /user/login
+          method: post
+          cors:
+            origin: '*'
+      - http:
+          path: /user/logout
+          method: put
+          cors:
+            origin: '*'
+      - http:
+          path: /user/update
+          method: put
+          cors:
+            origin: '*'
+      - http:
+          path: /user/delete
+          method: delete
+          cors:
+            origin: '*'

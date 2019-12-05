@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kireiii/Project_Yaguwagu.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kireiii/Project_Yaguwagu/issues"
+  },
+  "homepage": "https://github.com/kireiii/Project_Yaguwagu#readme"
+}
